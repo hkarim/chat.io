@@ -20,7 +20,7 @@ var init = function () {
 			},
 			redis: {
 				host: process.env.REDIS_HOST,
-				port: redisURI.REDIS_PORT
+				port: process.env.REDIS_PORT
 			}
 		}
 	}
