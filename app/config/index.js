@@ -3,27 +3,24 @@
 var init = function () {
 
 	if(process.env.NODE_ENV === 'production') {
-		var redisURI 		= require('url').parse(process.env.REDIS_URL);
-		var redisPassword 	= redisURI.auth.split(':')[1];
 		return {
-			dbURI: process.env.dbURI,
-			sessionSecret: process.env.sessionSecret,
+			dbURI: process.env.MONGO_URI,
+			sessionSecret: process.env.SESSION_SECRET,
 			facebook: {
-				clientID: process.env.facebookClientID,
-				clientSecret: process.env.facebookClientSecret,
+				clientID: process.env.FACEBOOK_CLIENT_ID,
+				clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
 				callbackURL: "/auth/facebook/callback",
 				profileFields: ['id', 'displayName', 'photos']
 			},
 			twitter:{
-				consumerKey: process.env.twitterConsumerKey,
-				consumerSecret: process.env.twitterConsumerSecret,
+				consumerKey: process.env.TWITTER_CONSUMER_KEY,
+				consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
 				callbackURL: "/auth/twitter/callback",
 				profileFields: ['id', 'displayName', 'photos']
 			},
 			redis: {
-				host: redisURI.hostname,
-				port: redisURI.port,
-				password: redisPassword
+				host: process.env.REDIS_HOST,
+				port: redisURI.REDIS_PORT
 			}
 		}
 	}
