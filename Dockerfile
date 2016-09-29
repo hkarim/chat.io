@@ -1,7 +1,5 @@
 FROM node:latest
 
-RUN npm install -g npm@latest
-
 WORKDIR /var/app
 
 ADD . .
